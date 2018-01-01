@@ -7,7 +7,7 @@ Challenges
 5. (Advanced) Collision Detection for the airplanes – when the hero collides with the enemy, have your score go down by 500. - done
 6. (Advanced) Collision Detection for the bullet – Have the score go up by 10 when an enemy is struck down. - done
 7. (Advanced) Get the enemy to explode when it is hit - done
-8. (Advanced) When the bullet hits, make a sound. 
+8. (Advanced) When the bullet hits, make a sound. - done 
 -->
 
 <html>
@@ -93,6 +93,9 @@ Challenges
 		
 		var typeEnemies = 3; // enemies 
 
+		var soundExplode1 = new Audio("Explosion2.mp3");
+		var soundExplode2 = new Audio("Explosion3.mp3");
+
 		function displayHero() {
 			document.getElementById('hero').style['top'] = hero.y + "px";
 			document.getElementById('hero').style['left'] = hero.x + "px";
@@ -153,6 +156,7 @@ Challenges
 					if (Math.abs(bullets[i].x - enemies[j].x) < 10 && Math.abs(bullets[i].y - enemies[j].y) < 10) {
 						score += 10;
 						hits = j;
+						soundExplode1.play();
 					}
 				} 
 			}
@@ -160,6 +164,7 @@ Challenges
 				if (Math.abs(hero.x - enemies[j].x) < 10 && Math.abs(hero.y - enemies[j].y) < 10) {
 					if (j != hits) {
 						score -= 500;
+						soundExplode2.play()
 					}
 
 				}
